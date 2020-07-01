@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+################################
+# FileName    : print_color.sh
+# Author      : quzhengpeng
+# CreateTime  : 2020-06-03 14:39:42
+# Version     : 1.0
+# Description : print colors and color code.
+################################
+
+for STYLE in 0 1 2 3 4 5 6 7; do
+    for FG in 30 31 32 33 34 35 36 37; do
+        for BG in 40 41 42 43 44 45 46 47; do
+            CTRL="\033[${STYLE};${FG};${BG}m"
+            echo -ne "${CTRL}"
+            echo -n  "\\\\033[${STYLE};${FG};${BG}m"
+            echo -ne "\033[0m"
+        done
+        echo
+    done
+    echo
+done
+
