@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+################################
+# FileName    : gitconfig
+# Author      : quzhengpeng
+# CreateTime  : 2020-09-18 14:44:19
+# Version     : 1.0
+# Description : 
+################################
+
+git config user.name quzhengpeng
+git config user.email quzhengpeng@gmail.com
