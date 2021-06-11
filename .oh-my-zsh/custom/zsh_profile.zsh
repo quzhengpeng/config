@@ -25,6 +25,10 @@ export NODE_HOME=/usr/local/node
 export NODE_PATH=$NODE_HOME/lib/node_modules
 export PATH=$NODE_HOME/bin:$PATH
 
+# set mysql home.
+export MYSQL_HOME=/usr/local/mysql
+export PATH=$MYSQL_HOME/bin:$PATH
+
 # set zookeeper home.
 export ZOOKEEPER_HOME=/usr/local/apache-zookeeper
 export PATH=$ZOOKEEPER_HOME/bin:$PATH
