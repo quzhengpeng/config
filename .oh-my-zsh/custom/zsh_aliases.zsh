@@ -31,9 +31,12 @@ alias hput='hadoop fs -put'
 alias hrmr='hadoop fs -rmr'
 alias hmkdir='hadoop fs -mkdir'
 
+# hive aliases
+alias beeline='beeline -u jdbc:hive2://localhost:10000'
+
 # spark aliases
 alias spark-sql='spark-sql --master spark://localhost:7077 --executor-memory 512m'
-alias spark-shell='spark-shell --master spark://localhost:7077 --executer-memory 512m --driver-memory 512m'
+alias spark-shell='spark-shell --master spark://localhost:7077 --executor-memory 512m --driver-memory 512m'
 alias spark-thrift='/usr/local/spark/sbin/start-thriftserver.sh --master spark://localhost:7077 --executor-memory 512m'
 
 # User specific aliases and functions
