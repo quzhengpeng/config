@@ -20,6 +20,14 @@ export PATH=$SBT_HOME/bin:$PATH
 export RUBY_HOME=/usr/local/ruby
 export PATH=$RUBY_HOME/bin:$PATH
 
+# set python2 home
+export PYTHON2_HOME=/usr/local/python2
+export PATH=$PYTHON2_HOME/bin:$PATH
+
+# set python3 home
+export PYTHON3_HOME=/usr/local/python3
+export PATH=$PYTHON3_HOME/bin:$PATH
+
 # set node.js home
 export NODE_HOME=/usr/local/node
 export NODE_PATH=$NODE_HOME/lib/node_modules
