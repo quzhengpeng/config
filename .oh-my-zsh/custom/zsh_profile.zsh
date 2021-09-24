@@ -22,11 +22,13 @@ export PATH=$RUBY_HOME/bin:$PATH
 
 # set python2 home
 export PYTHON2_HOME=/usr/local/python2
-export PATH=$PYTHON2_HOME/bin:$PATH
 
 # set python3 home
 export PYTHON3_HOME=/usr/local/python3
-export PATH=$PYTHON3_HOME/bin:$PATH
+
+# set python home
+export PYTHON_HOME=$PYTHON3_HOME
+export PATH=$PYTHON_HOME/bin:$PATH
 
 # set node.js home
 export NODE_HOME=/usr/local/node
