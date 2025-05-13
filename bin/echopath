@@ -4,8 +4,7 @@
 # Author      : quzhengpeng
 # CreateTime  : 2020-06-04 11:05:19
 # Version     : 1.0
-# Description : 
+# Description : echo $PATH per line.
 ################################
 
 echo $PATH | awk -F: '{for(i=1;i<=NF;i++) print $i}'
-
