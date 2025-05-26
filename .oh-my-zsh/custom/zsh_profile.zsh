@@ -72,16 +72,16 @@ export PATH=$HBASE_HOME/bin:$PATH
 export KAFKA_HOME=/usr/local/kafka
 export PATH=$KAFKA_HOME/bin:$PATH
 
-# set spark home.
+# set spark home
 export SPARK_HOME=/usr/local/spark
 export SPARK_YARN_USER_ENV=${HADOOP_CONF_DIR}
 export PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
 
-# set flink home.
+# set flink home
 export FLINK_HOME=/usr/local/flink
 export PATH=$FLINK_HOME/bin:$PATH
 
-# set kylin home.
+# set kylin home
 export KYLIN_HOME=/usr/local/apache-kylin
 export PATH=$KYLIN_HOME/bin:$PATH
 
@@ -90,3 +90,7 @@ export OOZIE_HOME=/usr/local/oozie
 export OOZIE_CONFIG=$OOZIE_HOME/conf
 export OOZIE_URL=http://localhost:11000/oozie
 export PATH=$OOZIE_HOME/bin:$PATH
+
+# set doris home
+export DORIS_HOME=/usr/local/apache-doris
+export PATH=$DORIS_HOME/bin:$PATH
