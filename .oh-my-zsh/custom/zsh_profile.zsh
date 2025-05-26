@@ -1,5 +1,5 @@
 # set java home
-export JAVA_HOME=/usr/local/jdk1.8
+export JAVA_HOME=/usr/local/jdk
 export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:$CLASSPATH
 export PATH=$JAVA_HOME/bin:$PATH
 
@@ -9,16 +9,16 @@ export MAVEN_HOME=/usr/local/apache-maven
 export PATH=$MAVEN_HOME/bin:$PATH
 
 # set scala home
-export SCALA_HOME=/usr/local/scala-2.12
+export SCALA_HOME=/usr/local/scala
 export PATH=$SCALA_HOME/bin:$PATH
 
 # set sbt home
 export SBT_HOME=/usr/local/sbt
 export PATH=$SBT_HOME/bin:$PATH
 
-# set ruby home
-export RUBY_HOME=/usr/local/ruby
-export PATH=$RUBY_HOME/bin:$PATH
+# set python home
+export PYTHON_HOME=/usr/local/python
+export PATH=$PYTHON_HOME/bin:$PATH
 
 # set python2 home
 export PYTHON2_HOME=/usr/local/python2
@@ -26,20 +26,20 @@ export PYTHON2_HOME=/usr/local/python2
 # set python3 home
 export PYTHON3_HOME=/usr/local/python3
 
-# set python home
-export PYTHON_HOME=$PYTHON3_HOME
-export PATH=$PYTHON_HOME/bin:$PATH
+# set ruby home
+export RUBY_HOME=/usr/local/ruby
+export PATH=$RUBY_HOME/bin:$PATH
 
 # set node.js home
 export NODE_HOME=/usr/local/node
 export NODE_PATH=$NODE_HOME/lib/node_modules
 export PATH=$NODE_HOME/bin:$PATH
 
-# set mysql home.
+# set mysql home
 export MYSQL_HOME=/usr/local/mysql
 export PATH=$MYSQL_HOME/bin:$PATH
 
-# set zookeeper home.
+# set zookeeper home
 export ZOOKEEPER_HOME=/usr/local/apache-zookeeper
 export PATH=$ZOOKEEPER_HOME/bin:$PATH
 
