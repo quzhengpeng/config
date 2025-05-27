@@ -94,3 +94,7 @@ export PATH=$OOZIE_HOME/bin:$PATH
 # set doris home
 export DORIS_HOME=/usr/local/apache-doris
 export PATH=$DORIS_HOME/bin:$PATH
+
+# set anaconda home
+export CONDA_HOME=/usr/local/anaconda
+export PATH=$CONDA_HOME/bin:$PATH
