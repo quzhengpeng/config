@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+################################
+# FileName    : catconf
+# Author      : quzhengpeng
+# CreateTime  : 2025-05-29 23:32:17
+# Version     : 1.0
+# Description : 
+################################
+
+CONF_NAME=$1
+cat $CONF_NAME | grep -v '^$' | grep -v '^#'
