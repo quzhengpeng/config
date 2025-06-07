@@ -35,6 +35,10 @@ export NODE_HOME=/usr/local/node
 export NODE_PATH=$NODE_HOME/lib/node_modules
 export PATH=$NODE_HOME/bin:$PATH
 
+# set perl home
+export PERL_HOME=/usr/local/perl
+export PATH=$PERL_HOME/bin:$PATH
+
 # set mysql home
 export MYSQL_HOME=/usr/local/mysql
 export PATH=$MYSQL_HOME/bin:$PATH
@@ -93,7 +97,13 @@ export PATH=$OOZIE_HOME/bin:$PATH
 
 # set doris home
 export DORIS_HOME=/usr/local/apache-doris
-export PATH=$DORIS_HOME/bin:$PATH
+export DORIS_FE_HOME=$HBASE_HOME/fe
+export DORIS_BE_HOME=$HBASE_HOME/be
+export PATH=$DORIS_FE_HOME/bin:$DORIS_BE_HOME/bin:$PATH
+
+# set druid home
+export DRUID_HOME=/usr/local/apache-druid
+export PATH=$DRUID_HOME/bin:$PATH
 
 # set anaconda home
 export CONDA_HOME=/usr/local/anaconda
