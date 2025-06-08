@@ -1,3 +1,6 @@
+# set user's private bin
+export PATH=$HOME/bin:$PATH
+
 # set java home
 export JAVA_HOME=/usr/local/jdk
 export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:$CLASSPATH
