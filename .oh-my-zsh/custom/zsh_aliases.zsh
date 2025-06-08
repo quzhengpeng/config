@@ -39,5 +39,8 @@ alias spark-sql='spark-sql --master spark://localhost:7077 --executor-memory 512
 alias spark-shell='spark-shell --master spark://localhost:7077 --executor-memory 512m --driver-memory 512m'
 alias spark-thrift='/usr/local/spark/sbin/start-thriftserver.sh --master spark://localhost:7077 --executor-memory 512m'
 
+# clickhouse aliases
+alias ck='clickhouse-client --user default --password default --port 9001 --prompt "\e[1;32;40m{user}\e[1;31;40m@\e[1;32;40m{host}:{port}\e[0m"'
+
 # User specific aliases and functions
 alias vncserver='vncserver -localhost no'
