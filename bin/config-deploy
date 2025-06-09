@@ -1,0 +1,129 @@
+#!/usr/bin/env zsh
+################################
+# FileName    : config-deploy
+# Author      : quzhengpeng
+# CreateTime  : 2025-06-04 14:53:57
+# Version     : 1.0
+# Description : deply config files to ~
+################################
+
+source $(dirname ${(%):-%x})/tools.zsh
+
+SOURCE_DIR=$(cd $(dirname ${(%):-%x})/.. && pwd -P)
+TARGET_DIR=$HOME
+SAFE_COPY_FLAG=true
+sync_files=("bin" ".m2" ".oh-my-zsh" ".vim" ".vimrc" ".zshrc")
+
+# test dir
+# mkdir -p /tmp/target
+# TARGET_DIR=/tmp/target
+sync_files=("bin" ".oh-my-zsh")
+
+# 检查文件是否相同
+check_file() {
+    local CHECK_FILE_NAME=$1
+    local CHECK_SOURCE_FILE=$SOURCE_DIR/$CHECK_FILE_NAME
+    local CHECK_TARGET_FILE=$TARGET_DIR/$CHECK_FILE_NAME
+
+    if ! is_file $CHECK_SOURCE_FILE; then
+        warning "Source file $CHECK_SOURCE_FILE is not exists."
+        return 1
+    elif ! is_file $CHECK_TARGET_FILE; then
+        warning "Target file $CHECK_TARGET_FILE is not exists."
+        return 1
+        warning "Target file $CHECK_TARGET_FILE is not exists."
+
+    fi
+
+    S1=$(sha256sum $CHECK_SOURCE_FILE | awk '{print $1}')
+    S2=$(sha256sum $CHECK_TARGET_FILE | awk '{print $1}')
+
+    if [[ "$S1" == "$S2" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# 复制文件
+copy_file() {
+    local SOURCE_FILE=$1
+    local TARGET_FILE=$2
+
+    local COPY_MSG=$(cp -rfv $SOURCE_FILE $TARGET_FILE 2>/dev/stdout)
+    local FLAG=$?
+
+    if [ $FLAG -eq 0 ]; then
+        info "File $TARGET_FILE is replaced."
+    else
+        error $COPY_MSG
+        ERROR "File $SOURCE_FILE has an error copying to $TARGET_FILE, pleace check it. return code is $FLAG."
+    fi
+}
+
+# 判断是否需要同步
+safe_copy_file() {
+    local FILE_NAME=$1
+    local SOURCE_FILE=$SOURCE_DIR/$FILE_NAME
+    local TARGET_FILE=$TARGET_DIR/$FILE_NAME
+    local COPY_FLAG=true
+
+    if check_file $FILE_NAME; then
+        info "File $TARGET_FILE is newest, skip it."
+    elif ! is_exists $TARGET_FILE; then
+        copy_file $SOURCE_FILE $TARGET_FILE
+    elif $SAFE_COPY_FLAG; then
+        WARNING  "Target file $TARGET_FILE \033[1;31mis already exists\033[0;33m, do you want to replace it? [Y/n] \033[0m " -n
+        read "response"
+        # toLowerCase
+        response=${response:l}
+        if [[ $response =~ ^(yes|y|'$') ]];then
+            copy_file $SOURCE_FILE $TARGET_FILE
+        else
+            info "File $TARGET_FILE is stopping to replaced."
+        fi
+    else
+        copy_file $SOURCE_FILE $TARGET_FILE
+    fi
+}
+
+
+# 同步文件/目录
+sync_file() {
+    INFO "Start sync file $1"
+
+    local SYNC_FILE_NAME=$1
+    local SYNC_SOURCE_FILE=$SOURCE_DIR/$SYNC_FILE_NAME
+    local SYNC_TARGET_FILE=$TARGET_DIR/$SYNC_FILE_NAME
+
+    if is_dir $SYNC_SOURCE_FILE; then
+        if ! is_exists $SYNC_TARGET_FILE; then
+            # 创建空目录
+            WARNING "Target dir is not exists, create $SYNC_TARGET_FILE"
+            mkdir -p $SYNC_TARGET_FILE
+        fi
+
+        for f in $(ls -a $SYNC_SOURCE_FILE); do
+            if [[ "$f" == "." || "$f" == ".." ]]; then
+                continue
+            else
+                sync_file $SYNC_FILE_NAME/$f
+            fi
+        done
+    fi
+
+    if is_file $SYNC_SOURCE_FILE; then
+        safe_copy_file $SYNC_FILE_NAME
+    fi
+}
+
+# 检查哪些文件/目录需要同步
+check_sync() {
+    for file in $(ls -a $SOURCE_DIR); do
+        if [[ $sync_files[(r)$file] == $file ]]; then
+            sync_file $file
+        fi
+    done
+}
+
+check_sync
